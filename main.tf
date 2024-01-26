@@ -51,8 +51,8 @@ module "iam_assumable_role_lambda_data" {
   role_requires_mfa = false
 
   custom_role_policy_arns = [
-    "arn:aws:iam::aws:policy/service-role/AmazonS3FullAccess",
-    "arn:aws:iam::aws:policy/EventBridge",
+    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+    arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess,
   ]
 }
 
