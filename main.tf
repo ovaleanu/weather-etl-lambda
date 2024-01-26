@@ -54,7 +54,7 @@ module "iam_assumable_role_lambda_data" {
 
   custom_role_policy_arns = [
     "arn:aws:iam::aws:policy/AmazonS3FullAccess",
-    "arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess,
+    "arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess",
   ]
 
   tags = local.tags
