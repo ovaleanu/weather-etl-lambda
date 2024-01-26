@@ -1,0 +1,1 @@
+{"filename": "builds/673258bacdab7195c8e82cf5d9d9c8b960c6c39b44c69fc7b86362731e3da190.zip", "runtime": "python3.8", "artifacts_dir": "builds", "build_plan": [["zip", "src/weather_retrieve.py", null]]}

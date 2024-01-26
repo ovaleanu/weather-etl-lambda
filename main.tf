@@ -84,7 +84,7 @@ module "s3_bucket_transformed" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "~> 3.0"
 
-  bucket_prefix = "${local.name}-weather_transformed"
+  bucket_prefix = "${local.name}-weather_trans"
 
   # For example only - please evaluate for your env
   force_destroy = true
@@ -107,8 +107,8 @@ module "lambda_function_etl" {
   handler       = "index.lambda_handler"
   runtime       = "python3.8"
   create_role   = false
-  lambda_role   = module.iam_assumable_role_lambda_data[0].iam_role_arn
-  source_path   = "../src/weather_etl.py"
+  lambda_role   = module.iam_assumable_role_lambda_data.iam_role_arn
+  source_path   = "src/weather_etl.py"
   timeout       = 10
 
   tags = local.tags
@@ -121,8 +121,8 @@ module "lambda_function_retrieve" {
   handler       = "index.lambda_handler"
   runtime       = "python3.8"
   create_role   = false
-  lambda_role   = module.iam_assumable_role_lambda_data[0].iam_role_arn
-  source_path   = "../src/weather_retrieve.py"
+  lambda_role   = module.iam_assumable_role_lambda_data.iam_role_arn
+  source_path   = "src/weather_retrieve.py"
   timeout       = 10
 
   tags = local.tags
