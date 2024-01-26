@@ -54,7 +54,7 @@ module "iam_assumable_role_lambda_data" {
 
   custom_role_policy_arns = [
     "arn:aws:iam::aws:policy/AmazonS3FullAccess",
-    arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess,
+    "arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess,
   ]
 
   tags = local.tags
@@ -137,5 +137,4 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     filter_prefix       = "data/"
     filter_suffix       = ".csv"
   }
-  tags = local.tags
 }
