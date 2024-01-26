@@ -36,6 +36,8 @@ module "eventbridge" {
       input               = jsonencode({ "job" : "cron-by-rate" })
     }
   }
+
+  tags = local.tags
 }
 
 
@@ -54,6 +56,8 @@ module "iam_assumable_role_lambda_data" {
     "arn:aws:iam::aws:policy/AmazonS3FullAccess",
     arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess,
   ]
+
+  tags = local.tags
 }
 
 module "s3_bucket_landing" {
@@ -107,9 +111,7 @@ module "lambda_function_etl" {
   source_path   = "../src/weather_etl.py"
   timeout       = 10
 
-  tags = {
-    tags = local.tags
-  }
+  tags = local.tags
 }
 
 module "lambda_function_retrieve" {
@@ -123,9 +125,7 @@ module "lambda_function_retrieve" {
   source_path   = "../src/weather_retrieve.py"
   timeout       = 10
 
-  tags = {
-    tags = local.tags
-  }
+  tags = local.tags
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
@@ -137,5 +137,5 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     filter_prefix       = "data/"
     filter_suffix       = ".csv"
   }
-
+  tags = local.tags
 }
